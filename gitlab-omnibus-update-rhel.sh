@@ -19,6 +19,5 @@ else
 	echo New Version: "$REMOTE_VERSION"
 fi
 
-#curl --progress-bar -so /usr/src/"$FILE" "$URL"
 rpm -Uvh "$URL"
 gitlab-ctl reconfigure
