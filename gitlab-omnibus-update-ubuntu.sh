@@ -2,7 +2,7 @@
 
 # update gitlab-omnibus
 
-set -x
+set -e
 
 URL=$(curl -s https://www.gitlab.com/downloads/ | grep "a href" | grep "ubuntu-12.04" | cut -d\" -f2)
 FILE=$(echo "$URL"|awk -F\/ '{print $(NF)}')
