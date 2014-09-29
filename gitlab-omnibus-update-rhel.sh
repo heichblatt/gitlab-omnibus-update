@@ -8,7 +8,7 @@ REDHAT_RELEASE=$(rpm -qa \*-release | grep -Ei "redhat|centos" | cut -d"-" -f3)
 URL=$(curl -s https://about.gitlab.com/downloads/ \
 	| grep "centos-$REDHAT_RELEASE" \
 	| cut -d\" -f2
-	| sed 's/<pre>curl -O //g' )
+	| sed -e 's/<pre>curl -O //g' -e 's/^ *//' -e 's/ *$//' )
 FILE=$(echo "$URL" | awk -F\/ '{print $(NF)}')
 REMOTE_VERSION=$(echo "$FILE" | sed 's/\.rpm//g')
 INSTALLED_VERSION=$(rpm -qa gitlab)
